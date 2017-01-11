@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  get 'menu/index'
+
+  get 'menu/new'
+
+  get 'menu/create'
+
   get 'user_list/index'
 
   devise_for :users

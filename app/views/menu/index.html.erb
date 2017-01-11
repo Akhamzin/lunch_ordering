@@ -1,0 +1,11 @@
+<h1>Menu list</h1>
+
+<% @menus.each do |menu| %>
+	<div>
+		Menu on
+		<%= menu.date.strftime('%d-%m-%Y, %A') %><br>
+	</div>
+<% end %>
+	<% unless Menu.already_created_today? %>
+		<%= link_to "Add new menu", menu_create_path  %>
+	<% end %>

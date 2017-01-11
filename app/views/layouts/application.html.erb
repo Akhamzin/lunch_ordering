@@ -16,6 +16,8 @@
 					</li>
 						<% if current_user.role_id == 1 %>
 						<li><%= link_to 'User list', user_list_index_path %></li>
+						<li><%= link_to "Menu", menu_index_path %></li>
+
 						<% end %>
 					<li><%= link_to 'Sign out', destroy_user_session_path, :method => :delete %></li>
 				<% else %>
