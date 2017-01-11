@@ -6,6 +6,24 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
+<header class = "navbar navbar-default navbar-fixed-top">
+	<nav>
+		<div class = "container">
+			<ul class = "nav nav-pills pull-right">
+				<% if user_signed_in? %>
+					<li>
+						<p><%= link_to current_user.name, edit_user_registration_path %></p>
+					</li>
+					<li><%= link_to 'Sign out', destroy_user_session_path, :method => :delete %></li>
+				<% else %>
+					<li><%= link_to 'Sign in', new_user_session_path %></li>
+					<li><%= link_to 'Sign up', new_user_registration_path %></li>
+				<% end %>
+				<li><%= link_to "Home", root_path %></li>
+			</ul>
+		</div>
+	</nav>
+</header>
 <body>
 	<p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>

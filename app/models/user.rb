@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-
+  belongs_to :role
 
   before_create :set_role
 
@@ -11,9 +11,9 @@ class User < ActiveRecord::Base
 
   def set_role
   	if User.first.present?
-  		self.isAdmin = false
+  		self.role ||= Role.find_by_name('admin')
   	else
-  		self.isAdmin = true
+  		self.role ||= Role.find_by_name('user')
   	end
   end
 
