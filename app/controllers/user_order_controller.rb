@@ -3,7 +3,7 @@ class UserOrderController < ApplicationController
 	
 	def index
 		@orders = UserOrder.where(date: Date.today)
-		
+		@total_all = 0
 	end
 
 	def new

@@ -1,5 +1,6 @@
 
 <% @orders.each do |o| %>
+	<% @total = 0 %>
 	<div>
 		<strong><%= o.order_owner %></strong>
 	</div>
@@ -9,14 +10,19 @@
 	
 	<div>
 		<%= number_to_currency(o.first_course_item.price) %>
+		<% @total += o.first_course_item.price %>
+		<% @total_all += o.first_course_item.price %>
 	</div>
 	<br>
 	<div>
 		<%= o.main_course_item.name %>
+		
 	</div>
 
 	<div>
 		<%= number_to_currency(o.main_course_item.price) %>
+		<% @total += o.main_course_item.price %>
+		<% @total_all += o.main_course_item.price %>
 	</div>
 	<br>
 	<div>
@@ -24,6 +30,18 @@
 	</div>
 	<div>
 		<%= number_to_currency(o.drink_item.price) %>
+		<% @total += o.drink_item.price %>
+		<% @total_all += o.drink_item.price %>
 	</div>
 	<br>
+	<div>
+	<strong>Total lunch cost on today:</strong>
+	<%= number_to_currency(@total) %>
+</div>
+<br>
 <% end -%>
+<br>
+<div>
+	<strong>Total all lunch cost on today:</strong>
+	<%= number_to_currency(@total_all) %>
+</div>
