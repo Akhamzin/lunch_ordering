@@ -1,0 +1,29 @@
+
+<% @orders.each do |o| %>
+	<div>
+		<strong><%= o.order_owner %></strong>
+	</div>
+	<div>
+		<%= o.first_course_item.name %>
+	</div>
+	
+	<div>
+		<%= number_to_currency(o.first_course_item.price) %>
+	</div>
+	<br>
+	<div>
+		<%= o.main_course_item.name %>
+	</div>
+
+	<div>
+		<%= number_to_currency(o.main_course_item.price) %>
+	</div>
+	<br>
+	<div>
+		<%= o.drink_item.name %>
+	</div>
+	<div>
+		<%= number_to_currency(o.drink_item.price) %>
+	</div>
+	<br>
+<% end -%>

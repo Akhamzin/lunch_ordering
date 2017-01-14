@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170114102648) do
+ActiveRecord::Schema.define(version: 20170114110201) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -78,6 +78,20 @@ ActiveRecord::Schema.define(version: 20170114102648) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "user_orders", force: :cascade do |t|
+    t.datetime "date"
+    t.string   "order_owner"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.integer  "first_course_item_id"
+    t.integer  "main_course_item_id"
+    t.integer  "drink_item_id"
+  end
+
+  add_index "user_orders", ["drink_item_id"], name: "index_user_orders_on_drink_item_id", using: :btree
+  add_index "user_orders", ["first_course_item_id"], name: "index_user_orders_on_first_course_item_id", using: :btree
+  add_index "user_orders", ["main_course_item_id"], name: "index_user_orders_on_main_course_item_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -103,5 +117,8 @@ ActiveRecord::Schema.define(version: 20170114102648) do
   add_foreign_key "first_course_items", "menus"
   add_foreign_key "main_course_items", "menus"
   add_foreign_key "menu_lists", "menus"
+  add_foreign_key "user_orders", "drink_items"
+  add_foreign_key "user_orders", "first_course_items"
+  add_foreign_key "user_orders", "main_course_items"
   add_foreign_key "users", "roles"
 end

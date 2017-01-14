@@ -1,0 +1,20 @@
+hear
+<%= form_for @order, :url => { :action => "create" } do |o| %>
+<div>
+	<%= o.label :first_course_item_id, "Choose a first course" %>
+	<%= o.select :first_course_item_id, @first %>
+</div>
+<div>
+	<%= o.label :main_course_item_id, "Choose s main course" %>
+	<%= o.select :main_course_item_id, @main %>
+</div>
+<div>
+	<%= o.label :drink_item_id, "Choose a drink" %>
+	<%= o.select :drink_item_id, @drink %>
+</div>
+
+<div>
+    <%= o.submit %>
+</div>
+
+<% end %>

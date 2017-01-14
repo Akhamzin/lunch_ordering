@@ -53,3 +53,6 @@
 <% if @menu.date == Date.today #&& current_user.role_id == '1' %>
 	<%= link_to 'Add drink to menu', new_menu_drink_item_path(@menu) %>
 <% end %>
+<br>
+
+<%= link_to 'New order', new_user_order_path(@order) %>

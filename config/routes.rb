@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get 'menu/create'
 
   #get 'user_list/index'
-
+  resources :user_order, only: [:index, :new, :create]
   devise_for :users
   get 'dashboard/index'
   resources :user_list, only: :index
