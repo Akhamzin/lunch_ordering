@@ -1,26 +1,26 @@
-<strong>First course</strong><br>
-
-
-
-
-
-
-<%= form_for @order, :url => { :action => "create" } do |o| %>
-<div>
-	<%= o.label :first_course_item_id, "Choose a first course" %>
-	<%= o.select :first_course_item_id, @first %>
+<div class="jumbotron">
+	<div class="container">
+	<br>
+	<h2>Create a new order</h2>
+		<%= form_for @order, :url => { :action => "create" } do |o| %>
+			<div>	
+				<%= o.label :first_course_item_id, "Choose a first course" %>
+				<%= o.select :first_course_item_id, @first %>
+			</div>
+			<br>
+			<div>
+				<%= o.label :main_course_item_id, "Choose s main course" %>
+				<%= o.select :main_course_item_id, @main %>
+			</div>
+			<br>
+			<div>
+				<%= o.label :drink_item_id, "Choose a drink" %>
+				<%= o.select :drink_item_id, @drink %>
+			</div>
+			<br>
+			<div>
+			    <%= o.submit :class => "btn btn-primary" %>
+			</div>
+		<% end %>
+	</div>
 </div>
-<div>
-	<%= o.label :main_course_item_id, "Choose s main course" %>
-	<%= o.select :main_course_item_id, @main %>
-</div>
-<div>
-	<%= o.label :drink_item_id, "Choose a drink" %>
-	<%= o.select :drink_item_id, @drink %>
-</div>
-
-<div>
-    <%= o.submit %>
-</div>
-
-<% end %>

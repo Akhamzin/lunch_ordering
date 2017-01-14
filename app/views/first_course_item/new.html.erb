@@ -1,6 +1,5 @@
-<h1>FirstCourseItem#new</h1>
-<p>Find me in app/views/first_course_item/new.html.erb</p>
-
+<div class="jumbotron text-center">
+<h2>Add first course to menu</h2>
 <%= form_for @first_course_item, :url => { :action => "create" } do |ml| %>
 <div>
 	<%= ml.label :name %>
@@ -16,7 +15,8 @@
 </div>
 
 <div>
-    <%= ml.submit %>
+    <%= ml.submit :class => "btn btn-primary" %>
 </div>
 
 <% end %>
+</div>

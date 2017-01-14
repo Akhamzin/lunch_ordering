@@ -7,34 +7,45 @@
   <%= csrf_meta_tags %>
 </head>
 <header class = "navbar navbar-default navbar-fixed-top">
-	<nav>
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<div class="navbar-brand">Lunch Ordering</div>
+		</div>
 		<div class = "container">
-			<ul class = "nav nav-pills pull-right">
+			<ul class = "nav navbar-nav pull-right"> 
 				<% if user_signed_in? %>
 					<li>
-						<p><%= link_to current_user.name, edit_user_registration_path %></p>
+						<%= link_to "Edit profile, #{current_user.name}", edit_user_registration_path %>
 					</li>
-						<% if current_user.role_id == 1 %>
+					<% if current_user.role_id == 1 %>
 						<li><%= link_to 'User list', user_list_index_path %></li>
 						
 						<li><%= link_to 'User orders', user_order_index_path %></li>
-						<% end %>
+					<% end %>
 						<li><%= link_to "Menu", menu_index_path %></li>
+						<li><%= link_to "Home", root_path %></li>
 					<li><%= link_to 'Sign out', destroy_user_session_path, :method => :delete %></li>
 				<% else %>
 					<li><%= link_to 'Sign in', new_user_session_path %></li>
 					<li><%= link_to 'Sign up', new_user_registration_path %></li>
 				<% end %>
-				<li><%= link_to "Home", root_path %></li>
+				
 
 			</ul>
 		</div>
-	</nav>
+	</div>
 </header>
 <body>
-	<p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-
+	<% if notice %>
+		<div class="alert alert-success">
+			<strong>Success!</strong><%= notice %>
+		</div>
+	<% end -%>
+	<% if alert %>
+		<div class="alert alert-danger">
+	    	<strong>Alert!</strong><p class="alert"><%= alert %></p>
+		</div>
+	<% end -%>
 <%= yield %>
 
 </body>

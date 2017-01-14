@@ -1,47 +1,63 @@
+<div class="jumbotron text-center">
+<h2>All orders on today</h2>
+</div>
+<table class="table table-striped table-hover">	
+	<thead>
+		<tr> 
+			<th>User name</th>
+			<th>First couse name</th>
+			<th>First couse price</th>
+			<th>Main couse name</th>
+			<th>Main couse price</th>
+			<th>Drink name</th>
+			<th>Drink price</th>
+			<th>Lunch cost</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @orders.each do |o| %>
+			<% @total = 0 %>
+			<tr>
+				<td>
+					<%= o.order_owner %>
+				</td>
+				<td>
+					<%= o.first_course_item.name %>
+				</td>
+				<td>
+					<%= number_to_currency(o.first_course_item.price) %>
+					<% @total += o.first_course_item.price %>
+					<% @total_all += o.first_course_item.price %>
+				</td>
+				
+				<td>
+					<%= o.main_course_item.name %>
+					
+				</td>
 
-<% @orders.each do |o| %>
-	<% @total = 0 %>
-	<div>
-		<strong><%= o.order_owner %></strong>
-	</div>
-	<div>
-		<%= o.first_course_item.name %>
-	</div>
-	
-	<div>
-		<%= number_to_currency(o.first_course_item.price) %>
-		<% @total += o.first_course_item.price %>
-		<% @total_all += o.first_course_item.price %>
-	</div>
-	<br>
-	<div>
-		<%= o.main_course_item.name %>
+				<td>
+					<%= number_to_currency(o.main_course_item.price) %>
+					<% @total += o.main_course_item.price %>
+					<% @total_all += o.main_course_item.price %>
+				</td>
+				<td>
+					<%= o.drink_item.name %>
+				</td>
+				<td>
+					<%= number_to_currency(o.drink_item.price) %>
+					<% @total += o.drink_item.price %>
+					<% @total_all += o.drink_item.price %>
+				</td>
+				<td>
+				
+				<%= number_to_currency(@total) %>
+				</td>
+				<% end -%>
+			</tr>
 		
-	</div>
-
-	<div>
-		<%= number_to_currency(o.main_course_item.price) %>
-		<% @total += o.main_course_item.price %>
-		<% @total_all += o.main_course_item.price %>
-	</div>
-	<br>
-	<div>
-		<%= o.drink_item.name %>
-	</div>
-	<div>
-		<%= number_to_currency(o.drink_item.price) %>
-		<% @total += o.drink_item.price %>
-		<% @total_all += o.drink_item.price %>
-	</div>
-	<br>
-	<div>
-	<strong>Total lunch cost on today:</strong>
-	<%= number_to_currency(@total) %>
-</div>
-<br>
-<% end -%>
-<br>
-<div>
-	<strong>Total all lunch cost on today:</strong>
-	<%= number_to_currency(@total_all) %>
-</div>
+		<th>
+			Total:			
+			<%= number_to_currency(@total_all) %>
+		</th>
+	</tbody>
+</table>

@@ -1,55 +1,66 @@
-<strong>First course</strong><br>
+
+<div class="jumbotron text-center">
+<div class="container">
+  <div class="row">
+  <div class="col-sm-4">
+  <br>
+	<h2>First course</h2>
+	<br>
 
 <% @first_course_list.each do |ml|%>
-	<strong>
-		<%= ml.id %>
-	</strong>
-	<strong>
-		<%= ml.name %>
-	</strong>
 	<div>
-		<%= number_to_currency(ml.price) %>
+		<strong>Course name:</strong> <%= ml.name %>
 	</div>
 	<div>
-		<%=  image_tag ml.food_image.url(:thumb) %>
+		<strong>Price:</strong> <%= number_to_currency(ml.price) %>
+	</div>
+	<div>
+		<%=  image_tag ml.food_image.url(:thumb), :class => "img-rounded" %>
 	</div>
 	
 <% end %>
-<strong>Main course</strong><br>
+</div>
+<div class="col-sm-4">
+	<br>
+	<h2>Main course</h2>
+	<br>
 
 <% @main_course_list.each do |mcl|%>
-	<strong>
-		<%= mcl.id %>
-	</strong>
-	<strong>
-		<%= mcl.name %>
-	</strong>
 	<div>
-		<%= number_to_currency(mcl.price) %>
+		<strong>Course name: </strong><%= mcl.name %>
 	</div>
 	<div>
-		<%=  image_tag mcl.food_image.url(:thumb) %>
+		<strong>Price:</strong> <%= number_to_currency(mcl.price) %>
+	</div>
+	<div>
+		<%=  image_tag mcl.food_image.url(:thumb), :class => "img-rounded" %>
 	</div>
 	
 <% end %>
-
-<strong>Drink</strong><br>
+</div>
+<div class="col-sm-4">
+	<br>
+	<h2>Drink</h2>
+	<br>
 
 <% @drink_list.each do |mcl|%>
-	<strong>
-		<%= mcl.id %>
-	</strong>
-	<strong>
-		<%= mcl.name %>
-	</strong>
+	
 	<div>
-		<%= number_to_currency(mcl.price) %>
+		<strong>Drink:</strong> <%= mcl.name %>
 	</div>
 	<div>
-		<%=  image_tag mcl.food_image.url(:thumb) %>
+		<strong>Price:</strong> <%= number_to_currency(mcl.price) %>
 	</div>
+	<div>
+		<%=  image_tag mcl.food_image.url(:thumb), :class => "img-rounded" %>
+	</div>
+
 	
 <% end %>
+</div>
+
+</div>
+</div>
 
 <% if @menu.date == Date.today && current_user.role_id == 1 %>
 	<%= link_to 'Add first course to menu', new_menu_first_course_item_path(@menu) %>
@@ -66,3 +77,4 @@
 <% if @menu.date == Date.today %>
 <%= link_to 'New order', new_user_order_path(@order) %>
 <% end %>
+</div>

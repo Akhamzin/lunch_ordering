@@ -1,3 +1,5 @@
+<div class="jumbotron text-center">
+<h2>Add drink to menu</h2>
 <%= form_for @drink_item, :url => { :action => "create" } do |di| %>
 <div>
 	<%= di.label :name %>
@@ -9,12 +11,13 @@
 </div>
 <div>
 	<%= di.label :food_image, "Image" %>
-	<%= di.file_field :food_image %>
+	<%= di.file_field :food_image, :class => "fileinput fileinput-new" %>
 </div>
 
 
 <div>
-    <%= di.submit %>
+    <%= di.submit :class => "btn btn-primary" %>
 </div>
 
 <% end %>
+</div>

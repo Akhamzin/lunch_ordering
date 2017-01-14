@@ -1,3 +1,4 @@
+<div class="jumbotron text-center">
 <h1>Menu list</h1>
 
 <% @menus.each do |menu| %>
@@ -9,3 +10,4 @@
 	<% unless Menu.already_created_today? %>
 		<%= link_to "Add new menu", menu_create_path  %>
 	<% end %>
+</div>
