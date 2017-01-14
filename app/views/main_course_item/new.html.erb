@@ -1,0 +1,16 @@
+
+<%= form_for @main_course_item, :url => { :action => "create" } do |ml| %>
+<div>
+	<%= ml.label :name %>
+	<%= ml.text_field :name %>
+</div>
+<div>
+	<%= ml.label :price %>
+	<%= ml.text_field :price %>
+</div>
+
+<div>
+    <%= ml.submit %>
+</div>
+
+<% end %>

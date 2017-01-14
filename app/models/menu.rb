@@ -1,4 +1,10 @@
 class Menu < ActiveRecord::Base
+	has_many :first_course_items
+	has_many :main_course_items
+	has_many :drink_items
+	accepts_nested_attributes_for :drink_items
+	accepts_nested_attributes_for :main_course_items
+	accepts_nested_attributes_for :first_course_items
 	validates :date, presence: true, uniqueness: true
 
 

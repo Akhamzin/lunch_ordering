@@ -1,0 +1,2 @@
+module MainCourseItemHelper
+end

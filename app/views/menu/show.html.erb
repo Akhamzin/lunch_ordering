@@ -1,0 +1,55 @@
+<strong>First course</strong><br>
+
+<% @first_course_list.each do |ml|%>
+	<strong>
+		<%= ml.id %>
+	</strong>
+	<strong>
+		<%= ml.name %>
+	</strong>
+	<div>
+		<%= number_to_currency(ml.price) %>
+	</div>
+	
+<% end %>
+<strong>Main course</strong><br>
+
+<% @main_course_list.each do |mcl|%>
+	<strong>
+		<%= mcl.id %>
+	</strong>
+	<strong>
+		<%= mcl.name %>
+	</strong>
+	<div>
+		<%= number_to_currency(mcl.price) %>
+	</div>
+	
+<% end %>
+
+<strong>Drink</strong><br>
+
+<% @drink_list.each do |mcl|%>
+	<strong>
+		<%= mcl.id %>
+	</strong>
+	<strong>
+		<%= mcl.name %>
+	</strong>
+	<div>
+		<%= number_to_currency(mcl.price) %>
+	</div>
+	
+<% end %>
+
+<% if @menu.date == Date.today #&& current_user.role_id == '1' %>
+	<%= link_to 'Add first course to menu', new_menu_first_course_item_path(@menu) %>
+<% end %>
+<br>
+<% if @menu.date == Date.today #&& current_user.role_id == '1' %>
+	<%= link_to 'Add main course to menu', new_menu_main_course_item_path(@menu) %>
+<% end %>
+<br>
+<% if @menu.date == Date.today #&& current_user.role_id == '1' %>
+	<%= link_to 'Add drink to menu', new_menu_drink_item_path(@menu) %>
+<% end %>

@@ -1,17 +1,26 @@
 Rails.application.routes.draw do
 
-  get 'menu/index'
+  #get 'first_course_item/new'
 
-  get 'menu/new'
+  #get 'first_course_item/create'
+
+  #get 'menu/index'
+
+  #get 'menu/new'
 
   get 'menu/create'
 
-  get 'user_list/index'
+  #get 'user_list/index'
 
   devise_for :users
   get 'dashboard/index'
   resources :user_list, only: :index
-  root to: "dashboard#index"
+  resources :menu, only: [:index, :new, :create, :show] do
+    resources :first_course_item, only: [:new, :create]
+    resources :main_course_item, only: [:new, :create]
+    resources :drink_item, only: [:new, :create]
+  end
+  root to: "menu#index"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

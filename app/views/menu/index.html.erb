@@ -3,7 +3,7 @@
 <% @menus.each do |menu| %>
 	<div>
 		Menu on
-		<%= menu.date.strftime('%d-%m-%Y, %A') %><br>
+		<%= link_to menu.date.strftime('%d-%m-%Y, %A'), menu_path(menu) %><br>
 	</div>
 <% end %>
 	<% unless Menu.already_created_today? %>

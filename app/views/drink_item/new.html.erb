@@ -1,0 +1,15 @@
+<%= form_for @drink_item, :url => { :action => "create" } do |di| %>
+<div>
+	<%= di.label :name %>
+	<%= di.text_field :name %>
+</div>
+<div>
+	<%= di.label :price %>
+	<%= di.text_field :price %>
+</div>
+
+<div>
+    <%= di.submit %>
+</div>
+
+<% end %>

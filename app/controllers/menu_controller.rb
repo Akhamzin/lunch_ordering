@@ -15,6 +15,13 @@ class MenuController < ApplicationController
 	  	else
 	  		format.html { render :index }
 	  	end
-	end
+	 end
   end
+
+  def show
+    @menu = Menu.find(params[:id])
+    @first_course_list = @menu.first_course_items
+    @main_course_list = @menu.main_course_items
+    @drink_list = @menu.drink_items
+  end  
 end
