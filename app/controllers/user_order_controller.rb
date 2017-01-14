@@ -8,7 +8,7 @@ class UserOrderController < ApplicationController
 
 	def new
 		@order = UserOrder.new
-		@menu = Menu.last
+		@menu = Menu.last  
 		@first_course = @menu.first_course_items
 		@first = @first_course.collect { |fc| [ fc.name, fc.id ]  }
 		@main_course = @menu.main_course_items
@@ -21,10 +21,12 @@ class UserOrderController < ApplicationController
 		@order = UserOrder.new(order_params)
 		@order.date = Date.today
 		@order.order_owner = current_user.name
-		if @order.save
-			redirect_to root_url
-		else
-			render 'new'
+		respond_to do |format|
+			if @order.save
+				format.html { redirect_to root_url, notice: "You successfuly ordered lunch." }
+			else
+				format.html { redirect_to root_url, alert: "This order didn't save. You already have an order for today." } 
+			end
 		end
 	end
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170114110201) do
+ActiveRecord::Schema.define(version: 20170114153038) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,9 +19,13 @@ ActiveRecord::Schema.define(version: 20170114110201) do
   create_table "drink_items", force: :cascade do |t|
     t.string   "name"
     t.decimal  "price"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
     t.integer  "menu_id"
+    t.string   "food_image_file_name"
+    t.string   "food_image_content_type"
+    t.integer  "food_image_file_size"
+    t.datetime "food_image_updated_at"
   end
 
   add_index "drink_items", ["menu_id"], name: "index_drink_items_on_menu_id", using: :btree
@@ -29,9 +33,13 @@ ActiveRecord::Schema.define(version: 20170114110201) do
   create_table "first_course_items", force: :cascade do |t|
     t.string   "name"
     t.decimal  "price"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
     t.integer  "menu_id"
+    t.string   "food_image_file_name"
+    t.string   "food_image_content_type"
+    t.integer  "food_image_file_size"
+    t.datetime "food_image_updated_at"
   end
 
   add_index "first_course_items", ["menu_id"], name: "index_first_course_items_on_menu_id", using: :btree
@@ -39,9 +47,13 @@ ActiveRecord::Schema.define(version: 20170114110201) do
   create_table "main_course_items", force: :cascade do |t|
     t.string   "name"
     t.decimal  "price"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
     t.integer  "menu_id"
+    t.string   "food_image_file_name"
+    t.string   "food_image_content_type"
+    t.integer  "food_image_file_size"
+    t.datetime "food_image_updated_at"
   end
 
   add_index "main_course_items", ["menu_id"], name: "index_main_course_items_on_menu_id", using: :btree

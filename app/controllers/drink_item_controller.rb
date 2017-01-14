@@ -21,7 +21,7 @@ class DrinkItemController < ApplicationController
 	private
 
 	  def menu_list_params
-	    params.require(:drink_item).permit(:menu_id, :name, :price)
+	    params.require(:drink_item).permit(:menu_id, :name, :price, :food_image)
 	  end
 
 end

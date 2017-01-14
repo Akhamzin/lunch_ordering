@@ -21,7 +21,7 @@ class FirstCourseItemController < ApplicationController
 	private
 
 	  def menu_list_params
-	    params.require(:first_course_item).permit(:menu_id, :name, :price)
+	    params.require(:first_course_item).permit(:menu_id, :name, :price, :food_image)
 	  end
 
 end
