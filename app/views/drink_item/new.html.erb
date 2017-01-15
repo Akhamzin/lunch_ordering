@@ -1,23 +1,48 @@
-<div class="jumbotron text-center">
-<h2>Add drink to menu</h2>
-<%= form_for @drink_item, :url => { :action => "create" } do |di| %>
-<div>
-	<%= di.label :name %>
-	<%= di.text_field :name %>
+<div class="container">
+	<%= form_for @drink_item, :url => { :action => "create" }, html: { multipart: true } do |f| %>
+		<% if @drink_item.errors.any? %>
+			<br>
+			<br>
+			<br>
+			<div class="alert alert-danger">
+			    <div id="error_explanation">
+			    <h2>The form contains <%= pluralize(@drink_item.errors.count, "error") %>:</h2>
+			      <ul>
+			      <% @drink_item.errors.full_messages.each do |message| %>
+			        <li><%=raw message %></li>
+			      <% end %>
+			      </ul>
+			    </div>
+		    </div>
+		<% end %>
+	<% end %>
 </div>
-<div>
-	<%= di.label :price %>
-	<%= di.text_field :price %>
-</div>
-<div>
-	<%= di.label :food_image, "Image" %>
-	<%= di.file_field :food_image, :class => "fileinput fileinput-new" %>
-</div>
+<div class="container">
+	<div class="jumbotron">
+		<h2>Add drink to menu</h2>
 
+		<%= form_for @drink_item, :url => { :action => "create" } do |di| %>
+		<div>
+			<%= di.label :name %>
+			<br>
+			<%= di.text_field :name %>
+		</div>
+		<div>
+			<%= di.label :price %>
+			<br>
+			<%= di.text_field :price %>
+		</div>
+		<div>
+			<%= di.label :food_image, "Image" %>
+			<br>
+			<%= di.file_field :food_image, class: "filestyle", "data-input" => false %>
+		</div>
 
-<div>
-    <%= di.submit :class => "btn btn-primary" %>
-</div>
+		<br>
+		<div>
+		    <%= di.submit :class => "btn btn-primary" %>
+		</div>
 
-<% end %>
+		<% end %>
+	</div>
 </div>

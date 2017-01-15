@@ -1,8 +1,16 @@
 class UserOrderController < ApplicationController
 	before_action :authenticate_user!
+	before_action :check_permission, only: [:index]
 	
 	def index
-		@orders = UserOrder.where(date: Date.today)
+		#@orders = UserOrder.where(date: Date.today)
+		@menu_date =
+      if params[:for_date]
+        Date.parse(params[:for_date]) 
+      else
+        Date.today
+      end
+      	@orders = UserOrder.where('date = ?', "#{@menu_date}") 
 		@total_all = 0
 	end
 
@@ -25,7 +33,7 @@ class UserOrderController < ApplicationController
 			if @order.save
 				format.html { redirect_to root_url, notice: "You successfuly ordered lunch." }
 			else
-				format.html { redirect_to root_url, alert: "This order didn't save. You already have an order for today." } 
+				format.html { redirect_to root_url, alert: "This order didn't saved. You already have an order for today." } 
 			end
 		end
 	end
@@ -36,4 +44,9 @@ class UserOrderController < ApplicationController
 		params.require(:user_order).permit(:first_course_item_id, :main_course_item_id, :drink_item_id)
 	end
 
+    def check_permission
+      if current_user.role_id != 1
+        redirect_to root_path, alert: 'Permission denied'
+      end
+    end
 end

@@ -1,22 +1,46 @@
-<div class="jumbotron text-center">
-<h2>Add main course to menu</h2>
-<%= form_for @main_course_item, :url => { :action => "create" } do |ml| %>
-<div>
-	<%= ml.label :name %>
-	<%= ml.text_field :name %>
+<div class="container">
+	<%= form_for @main_course_item, :url => { :action => "create" }, html: { multipart: true } do |f| %>
+		<% if @main_course_item.errors.any? %>
+			<br>
+			<br>
+			<br>
+			<div class="alert alert-danger">
+			    <div id="error_explanation">
+			    <h2>The form contains <%= pluralize(@main_course_item.errors.count, "error") %>:</h2>
+			      <ul>
+			      <% @main_course_item.errors.full_messages.each do |message| %>
+			        <li><%=raw message %></li>
+			      <% end %>
+			      </ul>
+			    </div>
+		    </div>
+		<% end %>
+	<% end %>
 </div>
-<div>
-	<%= ml.label :price %>
-	<%= ml.text_field :price %>
-</div>
-<div>
-	<%= ml.label :food_image, "Image" %>
-	<%= ml.file_field :food_image %>
-</div>
+<div class="container">
+	<div class="jumbotron">
+		<h2>Add main course to menu</h2>
+		<%= form_for @main_course_item, :url => { :action => "create" } do |ml| %>
+		<div>
+			<%= ml.label :name %>
+			<br>
+			<%= ml.text_field :name %>
+		</div>
+		<div>
+			<%= ml.label :price %>
+			<br>
+			<%= ml.text_field :price %>
+		</div>
+		<div>
+			<%= ml.label :food_image, "Image" %>
+			<br>
+			<%= ml.file_field :food_image, class: "filestyle", "data-input" => false %>
+		</div>
+		<br>
+		<div>
+		    <%= ml.submit :class => "btn btn-primary" %>
+		</div>
 
-<div>
-    <%= ml.submit :class => "btn btn-primary" %>
-</div>
-
-<% end %>
+		<% end %>
+	</div>
 </div>

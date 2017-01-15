@@ -1,5 +1,6 @@
 class MainCourseItemController < ApplicationController
   before_action :authenticate_user!
+  before_action :check_permission, only: [:new, :create]
 
   def new
   	@main_course_item = MainCourseItem.new
@@ -13,7 +14,7 @@ class MainCourseItemController < ApplicationController
       if @main_course_item.save
         format.html { redirect_to menu_url(@menu) }  
       else
-        render 'new'
+        format.html { render 'new' }
       end
     end
   end
@@ -23,5 +24,12 @@ class MainCourseItemController < ApplicationController
 	  def menu_list_params
 	    params.require(:main_course_item).permit(:menu_id, :name, :price, :food_image)
 	  end
+
+    def check_permission
+      if current_user.role_id != 1
+        redirect_to root_path, alert: 'Permission denied'
+      end
+    end
+
 
 end

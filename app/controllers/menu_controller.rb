@@ -1,5 +1,7 @@
 class MenuController < ApplicationController
   before_action :authenticate_user!
+  before_action :check_permission, only: [:new, :create]
+
   def index
   	@menus = Menu.all
   end
@@ -25,4 +27,12 @@ class MenuController < ApplicationController
     @main_course_list = @menu.main_course_items
     @drink_list = @menu.drink_items
   end  
+
+  private
+
+  def check_permission
+    if current_user.role_id != 1
+      redirect_to root_path, alert: 'Permission denied'
+    end
+  end
 end

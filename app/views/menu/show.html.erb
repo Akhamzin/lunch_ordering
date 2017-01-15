@@ -61,20 +61,22 @@
 
 </div>
 </div>
+<br>
+<div class="container">
+<% if @menu.date == Date.today && current_user.role_id == 1 %>
+	<%= link_to 'Add first course to menu', new_menu_first_course_item_path(@menu), :class => "btn btn-primary" %>
+<% end %>
+<% if @menu.date == Date.today && current_user.role_id == 1 %>
+	<%= link_to 'Add main course to menu', new_menu_main_course_item_path(@menu), :class => "btn btn-primary" %>
+<% end %>
 
 <% if @menu.date == Date.today && current_user.role_id == 1 %>
-	<%= link_to 'Add first course to menu', new_menu_first_course_item_path(@menu) %>
+	<%= link_to 'Add drink to menu', new_menu_drink_item_path(@menu), :class => "btn btn-primary" %>
 <% end %>
+</div>
 <br>
-<% if @menu.date == Date.today && current_user.role_id == 1 %>
-	<%= link_to 'Add main course to menu', new_menu_main_course_item_path(@menu) %>
-<% end %>
-<br>
-<% if @menu.date == Date.today && current_user.role_id == 1 %>
-	<%= link_to 'Add drink to menu', new_menu_drink_item_path(@menu) %>
-<% end %>
-<br>
+<div class="container">
 <% if @menu.date == Date.today %>
-<%= link_to 'New order', new_user_order_path(@order) %>
+<%= link_to 'New order', new_user_order_path(@order), :class => "btn btn-primary" %>
 <% end %>
 </div>

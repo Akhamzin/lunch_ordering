@@ -1,6 +1,15 @@
+<br>
+<br>
 <div class="jumbotron text-center">
-<h2>All orders on today</h2>
+	<%= link_to user_order_index_path(for_date: "#{@menu_date - 1.day}") do %>
+		<span class="glyphicon glyphicon-chevron-left"></span>
+	<% end -%>
+	<strong>All orders on <%= "#{@menu_date.strftime("%B, %d")}" %></strong>
+		<%= link_to user_order_index_path(for_date: "#{@menu_date + 1.day}") do %>
+	<span class="glyphicon glyphicon-chevron-right"></span>
+	<% end -%>
 </div>
+<% unless @orders.empty? %>
 <table class="table table-striped table-hover">	
 	<thead>
 		<tr> 
@@ -61,3 +70,4 @@
 		</th>
 	</tbody>
 </table>
+<% end -%>
