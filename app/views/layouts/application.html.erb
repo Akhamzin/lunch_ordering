@@ -36,14 +36,21 @@
 	</div>
 </header>
 <body>
+
 	<% if notice %>
+	<br>
+	<br>
+	<br>
 		<div class="alert alert-success">
-			<strong>Success!</strong><%= notice %>
+			<%= notice %>
 		</div>
 	<% end -%>
 	<% if alert %>
+	<br>
+	<br>
+	<br>
 		<div class="alert alert-danger">
-	    	<strong>Alert!</strong><p class="alert"><%= alert %></p>
+	    	<%= alert %>
 		</div>
 	<% end -%>
 <%= yield %>

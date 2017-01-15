@@ -7,7 +7,9 @@
 		<%= link_to menu.date.strftime('%d-%m-%Y, %A'), menu_path(menu) %><br>
 	</div>
 <% end %>
+<% if current_user.role_id == 1 %>
 	<% unless Menu.already_created_today? %>
 		<%= link_to "Add new menu", menu_create_path  %>
 	<% end %>
+<% end %>
 </div>
