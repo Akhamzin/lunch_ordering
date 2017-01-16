@@ -4,7 +4,12 @@ class MainCourseItemController < ApplicationController
 
   def new
     if Menu.exists?(params[:menu_id])
-     @main_course_item = MainCourseItem.new
+      @menu = Menu.find(params[:menu_id])
+      if @menu.date == Date.today
+        @main_course_item = MainCourseItem.new
+      else
+        render :file => "#{Rails.root}/public/500"
+      end
     else
       #redirect_to root_url
       render :file => "#{Rails.root}/public/404"

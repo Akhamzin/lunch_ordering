@@ -4,7 +4,12 @@ class DrinkItemController < ApplicationController
 
   def new
     if Menu.exists?(params[:menu_id])
-  	 @drink_item = DrinkItem.new
+      @menu = Menu.find(params[:menu_id])
+      if @menu.date == Date.today
+        @drink_item = DrinkItem.new
+      else
+        render :file => "#{Rails.root}/public/500"
+      end
     else
       render :file => "#{Rails.root}/public/404"
     end
