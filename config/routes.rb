@@ -21,6 +21,11 @@ Rails.application.routes.draw do
     resources :drink_item, only: [:new, :create]
   end
   root to: "menu#index"
+  namespace :api do
+    namespace :v1 do
+      resources :user_order, only: [:index]
+    end
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
