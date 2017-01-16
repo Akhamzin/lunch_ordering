@@ -3,7 +3,11 @@ class DrinkItemController < ApplicationController
   before_action :check_permission, only: [:new, :create]
 
   def new
-  	@drink_item = DrinkItem.new
+    if Menu.exists?(params[:menu_id])
+  	 @drink_item = DrinkItem.new
+    else
+      render :file => "#{Rails.root}/public/404"
+    end
   end
 
   def create

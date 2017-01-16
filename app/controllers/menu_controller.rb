@@ -22,10 +22,16 @@ class MenuController < ApplicationController
   end
 
   def show
-    @menu = Menu.find(params[:id])
-    @first_course_list = @menu.first_course_items
-    @main_course_list = @menu.main_course_items
-    @drink_list = @menu.drink_items
+    if Menu.exists?(params[:id])
+      @menu = Menu.find(params[:id])
+      @first_course_list = @menu.first_course_items
+      @main_course_list = @menu.main_course_items
+      @drink_list = @menu.drink_items
+    else
+      #redirect_to root_url
+      render :file => "#{Rails.root}/public/404"
+    end
+    
   end  
 
   private

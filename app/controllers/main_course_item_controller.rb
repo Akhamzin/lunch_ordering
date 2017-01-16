@@ -3,7 +3,13 @@ class MainCourseItemController < ApplicationController
   before_action :check_permission, only: [:new, :create]
 
   def new
-  	@main_course_item = MainCourseItem.new
+    if Menu.exists?(params[:menu_id])
+     @main_course_item = MainCourseItem.new
+    else
+      #redirect_to root_url
+      render :file => "#{Rails.root}/public/404"
+    end
+  	#@main_course_item = MainCourseItem.new
   end
 
   def create
