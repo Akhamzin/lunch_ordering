@@ -37,14 +37,18 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-
+group :test do
+  gem 'shoulda-context'
+  gem 'shoulda-matchers', '~> 2.5.0' 
+end
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
   gem 'rspec'
   gem 'rspec-rails', '~> 3.5'
-  gem 'shoulda-context'
-  gem 'shoulda-matchers', '~> 3.1'
+  #gem 'shoulda'
+  
+  #gem 'shoulda-matchers', '~> 3.1'
   gem 'factory_girl_rails'
   gem 'capybara'
 end
