@@ -3,7 +3,7 @@ class Api::V1::UserOrderController < Api::V1::BaseController
       
 
 	def index
-		orders = UserOrder.where('date = ?', Date.today)
+		orders = UserOrder.where(date: Date.today)
 		#orders = apply_filters(orders, params)
 		render(
 			json: ActiveModel::ArraySerializer.new(

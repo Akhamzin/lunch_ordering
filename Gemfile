@@ -9,6 +9,7 @@ gem 'bootstrap-sass'
 gem 'bootstrap-select-rails'
 gem 'active_model_serializers', '0.9.2'
 gem 'active_hash_relation'
+gem 'rails_12factor'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.15'
 # Use SCSS for stylesheets
