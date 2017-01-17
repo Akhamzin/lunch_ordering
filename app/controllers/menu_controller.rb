@@ -1,7 +1,7 @@
 class MenuController < ApplicationController
   before_action :authenticate_user!
   before_action :check_permission, only: [:new, :create]
-
+ 
   def index
   	@menus = Menu.all
   end
